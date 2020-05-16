@@ -8,7 +8,7 @@ class IndexBannerComponent extends StatelessWidget {
   IndexBannerComponent({Key key, this.banners}) : super(key: key);
 
   @override
-  Widget build(BuildContext ctx) {
+  Widget build(BuildContext context) {
     List<Widget> rows = [];
 
     for (var i = 0; i < banners.length; i++) {
@@ -19,30 +19,35 @@ class IndexBannerComponent extends StatelessWidget {
         ));
       }
 
-      rows.add(new Container(
-          padding: EdgeInsets.only(left: 8.0, right: 8.0),
-          margin: EdgeInsets.only(bottom: 15.0),
-          child: new Column(
-            children: <Widget>[
-              new Container(
-                child: new Text(
-                  banners[i].name,
-                  style: new TextStyle(fontSize: 20),
-                ),
-              ),
-              new Container(
-                height: 145.0,
-                child: new ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: courses,
-                ),
-              ),
-            ],
-          )));
+      rows.add(_itemBuild(context, banners[i], courses));
     }
 
     return new Column(
       children: rows,
     );
+  }
+
+  Widget _itemBuild(BuildContext context, IndexBannerModel bannerModel,
+      List<Widget> courses) {
+    return new Container(
+        padding: EdgeInsets.only(left: 8.0, right: 8.0),
+        margin: EdgeInsets.only(bottom: 15.0),
+        child: new Column(
+          children: <Widget>[
+            new Container(
+              child: new Text(
+                bannerModel.name,
+                style: new TextStyle(fontSize: 16),
+              ),
+            ),
+            new Container(
+              height: 145.0,
+              child: new ListView(
+                scrollDirection: Axis.horizontal,
+                children: courses,
+              ),
+            ),
+          ],
+        ));
   }
 }

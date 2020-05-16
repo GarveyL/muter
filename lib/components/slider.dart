@@ -14,9 +14,17 @@ class SliderComponent extends StatelessWidget {
       child: new Swiper(
         itemCount: sliders.length,
         itemBuilder: (BuildContext buildContext, int index) {
-          return Image.network(
-            sliders[index].thumb,
-            fit: BoxFit.fill,
+          return GestureDetector(
+            onTap: () {
+              print("点击我了" + sliders[index].toString());
+            },
+            child: new ClipRRect(
+              borderRadius: BorderRadius.all(const Radius.circular(6.0)),
+              child: Image.network(
+                sliders[index].thumb,
+                fit: BoxFit.fill,
+              ),
+            ),
           );
         },
         pagination: new SwiperPagination(),

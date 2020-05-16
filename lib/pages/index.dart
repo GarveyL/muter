@@ -38,29 +38,7 @@ class _IndexPageState extends State<IndexPage> with TickerProviderStateMixin {
     return Scaffold(
         body: new ListView(
       children: <Widget>[
-        new Container(
-          decoration: new BoxDecoration(
-              color: Colors.black12,
-              borderRadius: new BorderRadius.all(const Radius.circular(30.0))),
-          margin: EdgeInsets.all(8.0),
-          child: new Row(
-            children: <Widget>[
-              new Expanded(
-                  child: new FlatButton.icon(
-                      onPressed: () {
-                        print('点击我了');
-                      },
-                      icon: new Icon(
-                        Icons.search,
-                        size: 16.0,
-                      ),
-                      label: new Text(
-                        '搜索课程',
-                        style: new TextStyle(fontSize: 16.0),
-                      ))),
-            ],
-          ),
-        ),
+        _searchBar(),
         Padding(
           padding: EdgeInsets.all(8.0),
           child: new SliderComponent(
@@ -72,5 +50,32 @@ class _IndexPageState extends State<IndexPage> with TickerProviderStateMixin {
         ),
       ],
     ));
+  }
+
+  Widget _searchBar() {
+    return new Container(
+      height: 40.0,
+      decoration: new BoxDecoration(
+          color: Colors.black12,
+          borderRadius: new BorderRadius.all(const Radius.circular(30.0))),
+      margin: EdgeInsets.all(8.0),
+      child: new Row(
+        children: <Widget>[
+          new Expanded(
+              child: new FlatButton.icon(
+                  onPressed: () {
+                    print('点击我了');
+                  },
+                  icon: new Icon(
+                    Icons.search,
+                    size: 16.0,
+                  ),
+                  label: new Text(
+                    '搜索课程',
+                    style: new TextStyle(fontSize: 16.0),
+                  ))),
+        ],
+      ),
+    );
   }
 }
